@@ -2,6 +2,9 @@ const Discord = require('discord.js');
 
 const client = new Discord.Client();
 
+let auth = require('./auth.json');
+const token = JSON.parse(auth)[0].token;
+
 let prefix = '!';
 
 const fs = require('fs');
@@ -39,4 +42,4 @@ client.on('message', message => {
 });
 
 // ^^^ PUT CODE ABOVE ^^^ //
-client.login('NzM1MjE5ODc4MzQ0MTMwNzAw.XxdFIQ.koaPCBkYthZeY1BcGf0DlXkkuD4');
+client.login(token);
