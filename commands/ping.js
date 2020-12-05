@@ -1,6 +1,7 @@
 module.exports = {
-    name: 'ping',
-    description: "Sends a pong back.",
+    name: 'Ping',
+    command: 'ping',
+    description: "Sends a pong back. Used to test whether the bot is working.",
     usage: '`ping`',
     execute(message, args) {
         if(message.member.roles.cache.has('735229898871799971')){

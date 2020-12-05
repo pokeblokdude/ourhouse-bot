@@ -1,7 +1,9 @@
 const fs = require('fs');
+const { MessageEmbed } = require("discord.js");
 
 module.exports = {
-    name: 'help',
+    name: 'Help',
+    command: 'help',
     description: "Returns a list of all commands.",
     usage: '`help`',
     execute(message, args) {
@@ -9,19 +11,26 @@ module.exports = {
         let desclist = [];
         let usagelist = [];
 
-        var files = fs.readdirSync('./');
+        var files = fs.readdirSync('./commands');
         let commandFiles = files.filter(file => file.endsWith('.js'));
+
         for(const file of commandFiles) {
             const command = require(`./${file}`);
-            namelist.push(command.hasOwnProperty('name') ? command.exports.name : 'unnamed');
-            desclist.push(command.hasOwnProperty('description') ? command.exports.description : 'no description');
-            usagelist.push(command.hasOwnProperty('usage') ? command.exports.usage : 'undefined usage');
+            namelist.push(command.hasOwnProperty('name') ? command.name : 'unnamed');
+            desclist.push(command.hasOwnProperty('description') ? command.description : 'no description');
+            usagelist.push(command.hasOwnProperty('usage') ? command.usage : 'undefined usage');
         }
 
+        const embed = new MessageEmbed()
+            .setTitle('List of Our House Commands')
+            .setColor('black')
+            .setDescription('')
+        ;
         for(let i = 0; i < namelist.length; i++) {
-            // send help text
-            message.author.send(`**${namelist[i]}** \n${desclist[i]} \n${usage[i]}`);
+            embed.setDescription(
+                embed.description.concat(`__**${namelist[i]}**__ \n*${desclist[i]}* \nUsage: ${usagelist[i]}\n\n`)
+            );
         }
-        
+        message.author.send(embed);  
     }
 }

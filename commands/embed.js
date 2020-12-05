@@ -1,7 +1,8 @@
 const { MessageEmbed } = require("discord.js");
 
 module.exports = {
-    name: 'embed',
+    name: 'Embed',
+    command: 'embed',
     description: "Sends a sample embed.",
     usage: '`embed`',
     execute(message, args) {
