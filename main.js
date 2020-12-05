@@ -2,10 +2,9 @@ const Discord = require('discord.js');
 
 const client = new Discord.Client();
 
-let auth = require('./auth.json');
-const token = auth.token;
-
-let prefix = '!';
+let config = require('./config.json');
+const token = config.token;
+const prefix = config.prefix;
 
 const fs = require('fs');
 
@@ -36,8 +35,8 @@ client.on('message', message => {
     if(command === 'setprefix') {
         client.commands.get('setprefix').execute(message, args);
     }
-    if(command === 'commands') {
-        client.commands.get('commands').execute(message, args);
+    if(command === 'help') {
+        client.commands.get('help').execute(message, args);
     }
 });
 
