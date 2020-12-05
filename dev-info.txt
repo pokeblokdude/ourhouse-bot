@@ -1,0 +1,3 @@
+===== Info for developing commands =====
+    - commands MUST have a .command property
+        - commands will still work even with other properties missing, although only default info will be listed in the !help command
