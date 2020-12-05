@@ -8,7 +8,7 @@ const prefix = config.prefix;
 module.exports = {
     name: 'Help',
     command: 'help',
-    description: "Returns a list of all commands.",
+    description: "DMs you a list of all commands.",
     usage: '`help`',
     execute(message, args) {
         let namelist = [];

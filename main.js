@@ -38,6 +38,9 @@ client.on('message', message => {
     if(command === 'help') {
         client.commands.get('help').execute(message, args);
     }
+    if(command === 'purge') {
+        client.commands.get('purge').execute(message, args);
+    }
 });
 
 // ^^^ PUT CODE ABOVE ^^^ //
