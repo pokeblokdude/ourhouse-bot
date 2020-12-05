@@ -3,7 +3,8 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 
 let auth = require('./auth.json');
-const token = JSON.parse(auth)[0].token;
+console.log(auth);
+const token = auth.token;
 
 let prefix = '!';
 
