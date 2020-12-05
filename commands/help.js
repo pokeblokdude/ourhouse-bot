@@ -1,6 +1,10 @@
 const fs = require('fs');
 const { MessageEmbed } = require("discord.js");
 
+const config = require('./../config.json');
+console.log(config);
+const prefix = config.prefix;
+
 module.exports = {
     name: 'Help',
     command: 'help',
@@ -27,10 +31,15 @@ module.exports = {
             .setDescription('')
         ;
         for(let i = 0; i < namelist.length; i++) {
+            if(i === 0) {
+                embed.setDescription(
+                    embed.description.concat(`Prefix: \`${prefix}\` \n\n`)
+                );
+            }
             embed.setDescription(
                 embed.description.concat(`__**${namelist[i]}**__ \n*${desclist[i]}* \nUsage: ${usagelist[i]}\n\n`)
             );
         }
-        message.author.send(embed);  
+        message.author.send(embed).catch(() => message.reply("Unable to send DM."));
     }
 }
