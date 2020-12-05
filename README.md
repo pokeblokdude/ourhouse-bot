@@ -1,3 +1,3 @@
 # Our House Server Bot
 
-This is a project I'm working on to learn Discord.js and jsut to become comfortable with JS in general.
+This is a project I'm working on to learn Discord.js and just to become comfortable with JS in general.
