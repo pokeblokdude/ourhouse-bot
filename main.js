@@ -21,7 +21,7 @@ client.once('ready', () => {
 
 client.on('message', message => {
     const prefix = config.prefix;
-    // #engine-room = 784935785068756992, bot testing server = 735222619909128356
+    // #engine-room = 784935785068756992, bot testing server #general = 735222619909128356
     if((message.channel.id === '784935785068756992' || message.channel.id === '735222619909128356') && message.content.startsWith(prefix) && !message.author.bot) {
         const msg = message.content;
         const args = msg.slice(prefix.length).split(' ');
@@ -36,6 +36,9 @@ client.on('message', message => {
                 break;
             case 'ping':
                 client.commands.get('ping').execute(message, args);
+                break;
+            case 'poll':
+                client.commands.get('poll').execute(message, args);
                 break;
             case 'purge':
                 client.commands.get('purge').execute(message, args);
