@@ -34,6 +34,9 @@ client.on('message', message => {
             case 'help':
                 client.commands.get('help').execute(message, args);
                 break;
+            case 'nukepolls':
+                client.commands.get('nukepolls').execute(message, args);
+                break;
             case 'ping':
                 client.commands.get('ping').execute(message, args);
                 break;

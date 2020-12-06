@@ -11,7 +11,7 @@ module.exports = {
             message.channel.send(`Usage: ${this.usage}`);
             return;
         }
-        //                  'Engineer' (Our House) = 784934880433143809, "Admin" (Bot Testing) = 735229898871799971
+        //               Engineer' (Our House) = 784934880433143809, "Admin" (Bot Testing) = 735229898871799971
         if(message.member.roles.cache.find(r => r.id === '784934880433143809' || '735229898871799971')) {
             console.log(config);
             Object.defineProperty(config, "prefix", {

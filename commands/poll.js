@@ -1,5 +1,5 @@
 const fs = require('fs');
-const polljson = require('./../data/polls.json');
+const { MessageEmbed } = require("discord.js");
 
 module.exports = {
     name: 'Poll',
@@ -14,7 +14,6 @@ module.exports = {
         console.log(args);
         // Turn [arg1, arg2, arg3, arg4, ... , argn] (array of words) into [title, option1, option2, ... , optionn] (array of strings)
         const pollargs = args.reduce(function(acc, val) {
-            console.log(acc);
             if(val.startsWith("\"")) {
                 if(acc.instring) {
                     acc.validsyntax = false;
@@ -52,6 +51,10 @@ module.exports = {
             message.channel.send(`Usage: ${this.usage}`);
             return;
         }
+        
+        // Actual data from the polls.json file
+        let polljson = JSON.parse(fs.readFileSync('./data/polls.json'));
+        console.log(polljson);
         if(JSON.parse(polljson.hasOwnProperty(message.channel.id))){
             message.channel.send('This channel already has an active poll!');
             return;
@@ -78,7 +81,15 @@ module.exports = {
             configurable: true,
             enumerable: true
         });
+        Object.defineProperty(polljson, "empty", {
+            value: false,
+            writable: true,
+            configurable: true,
+            enumerable: true
+        });
         
         fs.writeFile('./data/polls.json', JSON.stringify(polljson, null, 4), (err) => { if(err) { throw err; } else { message.channel.send(`Wrote ${polldata} to \`polls.json\``) } });
+        const embed = new MessageEmbed().setTitle(polldata.title).setDescription();
+        message.channel.send(embed);
     }
 }
