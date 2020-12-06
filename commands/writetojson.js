@@ -20,7 +20,7 @@ module.exports = {
         });
         console.log(json);
 
-        fs.writeFile('./data/test.json', JSON.stringify(json, null, 4), (err) => { if(err) throw err; });
+        fs.writeFile('./data/test.json', JSON.stringify(json, null, 4), (err) => { if(err) { throw err; } else { message.channel.send(`Wrote ${json} to \`test.json\``) } });
 
     }
 }

@@ -4,7 +4,7 @@ module.exports = {
     description: "Delete a specified number of messages.",
     usage: "`purge [number of messages]`",
     execute(message, args) {
-        if(!args.length) {
+        if(args.length !== 1) {
             message.channel.send(`Usage: ${this.usage}`);
             return;
         }

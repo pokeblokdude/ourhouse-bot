@@ -21,7 +21,7 @@ module.exports = {
                 enumerable: true
             });
             console.log(config);
-            fs.writeFile('./data/config.json', JSON.stringify(config, null, 4), (err) => { if(err) return console.log(err); });
+            fs.writeFile('./data/config.json', JSON.stringify(config, null, 4), (err) => { if(err) { return console.log(err); } else { message.channel.send(`Updated prefix to \`${config.prefix}\`.`) } });
         }
         else {
             message.channel.send('Insufficient permissions.');

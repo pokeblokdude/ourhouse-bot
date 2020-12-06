@@ -27,23 +27,27 @@ client.on('message', message => {
         const args = msg.slice(prefix.length).split(' ');
         const command = args.shift().toLowerCase();
 
-        if(command === 'ping') {
-            client.commands.get('ping').execute(message, args);
-        }
-        if(command === 'embed') {
-            client.commands.get('embed').execute(message, args);
-        }
-        if(command === 'setprefix') {
-            client.commands.get('setprefix').execute(message, args);
-        }
-        if(command === 'help') {
-            client.commands.get('help').execute(message, args);
-        }
-        if(command === 'purge') {
-            client.commands.get('purge').execute(message, args);
-        }
-        if(command === 'writetojson') {
-            client.commands.get('writetojson').execute(message, args);
+        switch(command) {
+            case 'embed':
+                client.commands.get('embed').execute(message, args);
+                break;
+            case 'help':
+                client.commands.get('help').execute(message, args);
+                break;
+            case 'ping':
+                client.commands.get('ping').execute(message, args);
+                break;
+            case 'purge':
+                client.commands.get('purge').execute(message, args);
+                break;
+            case 'setprefix':
+                client.commands.get('setprefix').execute(message, args);
+                break;
+            case 'writetojson':
+                client.commands.get('writetojson').execute(message, args);
+                break;
+            default:
+                message.channel.send(`Use \`${prefix}help\` to be sent a list of all commands.`);
         }
     } 
     else {
