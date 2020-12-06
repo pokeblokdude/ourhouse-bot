@@ -2,9 +2,8 @@ const Discord = require('discord.js');
 
 const client = new Discord.Client();
 
-let config = require('./config.json');
+let config = require('./data/config.json');
 const token = config.token;
-const prefix = config.prefix;
 
 const fs = require('fs');
 
@@ -21,25 +20,34 @@ client.once('ready', () => {
 });
 
 client.on('message', message => {
-    if(!message.content.startsWith(prefix) || message.author.bot || message.channel.id !== '784935785068756992') return;
-    
-    const args = message.content.slice(prefix.length).split(/ +/);
-    const command = args.shift().toLowerCase();
+    const prefix = config.prefix;
+    // #engine-room = 784935785068756992, bot testing server = 735222619909128356
+    if((message.channel.id === '784935785068756992' || message.channel.id === '735222619909128356') && message.content.startsWith(prefix) && !message.author.bot) {
+        const msg = message.content;
+        const args = msg.slice(prefix.length).split(' ');
+        const command = args.shift().toLowerCase();
 
-    if(command === 'ping') {
-        client.commands.get('ping').execute(message, args);
-    }
-    if(command === 'embed') {
-        client.commands.get('embed').execute(message, args);
-    }
-    if(command === 'setprefix') {
-        client.commands.get('setprefix').execute(message, args);
-    }
-    if(command === 'help') {
-        client.commands.get('help').execute(message, args);
-    }
-    if(command === 'purge') {
-        client.commands.get('purge').execute(message, args);
+        if(command === 'ping') {
+            client.commands.get('ping').execute(message, args);
+        }
+        if(command === 'embed') {
+            client.commands.get('embed').execute(message, args);
+        }
+        if(command === 'setprefix') {
+            client.commands.get('setprefix').execute(message, args);
+        }
+        if(command === 'help') {
+            client.commands.get('help').execute(message, args);
+        }
+        if(command === 'purge') {
+            client.commands.get('purge').execute(message, args);
+        }
+        if(command === 'writetojson') {
+            client.commands.get('writetojson').execute(message, args);
+        }
+    } 
+    else {
+        return;
     }
 });
 
