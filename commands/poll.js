@@ -88,7 +88,7 @@ module.exports = {
             enumerable: true
         });
         
-        fs.writeFile('./data/polls.json', JSON.stringify(polljson, null, 4), (err) => { if(err) { throw err; } else { message.channel.send(`Wrote ${polldata} to \`polls.json\``) } });
+        fs.writeFile('./data/polls.json', JSON.stringify(polljson, null, 4), (err) => { if(err) { throw err; } });
         const embed = new MessageEmbed().setTitle(polldata.title).setDescription();
         message.channel.send(embed);
     }
