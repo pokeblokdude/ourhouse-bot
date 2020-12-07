@@ -28,6 +28,9 @@ client.on('message', message => {
         const command = args.shift().toLowerCase();
 
         switch(command) {
+            case 'ding':
+                client.commands.get('ding').execute(message, args);
+                break;
             case 'embed':
                 client.commands.get('embed').execute(message, args);
                 break;
