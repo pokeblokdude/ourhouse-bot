@@ -12,7 +12,7 @@ module.exports = {
             return;
         }
         //               Engineer' (Our House) = 784934880433143809, "Admin" (Bot Testing) = 735229898871799971
-        if(message.member.role.cache.find(r => r.id === '784934880433143809' || '735229898871799971')) {
+        if(message.member.roles.cache.find(r => r.id === '784934880433143809' || '735229898871799971')) {
             console.log(args);
             // Turn [arg1, arg2, arg3, arg4, ... , argn] (array of words) into [title, option1, option2, ... , optionn] (array of strings)
             const pollargs = args.reduce(function(acc, val) {

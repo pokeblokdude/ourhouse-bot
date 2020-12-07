@@ -7,7 +7,7 @@ module.exports = {
     usage: "`writetojson [key] [value]`",
     execute(message, args) {
         //               Engineer' (Our House) = 784934880433143809, "Admin" (Bot Testing) = 735229898871799971
-        if(message.member.role.cache.find(r => r.id === '784934880433143809' || '735229898871799971')) {
+        if(message.member.roles.cache.find(r => r.id === '784934880433143809' || '735229898871799971')) {
             if(args.length !== 2) {
                 message.channel.send(`Usage: ${this.usage}`);
                 return;
