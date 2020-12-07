@@ -2,7 +2,7 @@ const fs = require('fs');
 const config = require('./../data/config.json');
 
 module.exports = {
-    name: 'Set Prefix',
+    name: '[LOCKED] Set Prefix',
     command: 'setprefix',
     description: "Changes the prefix used to write bot commands. Can currently only be used by those with the `Engineer` role.",
     usage: "`setprefix [prefix]`",
