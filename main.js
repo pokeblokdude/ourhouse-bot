@@ -36,6 +36,9 @@ client.on('message', message => {
             case 'embed':
                 client.commands.get('embed').execute(message, args);
                 break;
+            case 'endpoll':
+                client.commands.get('endpoll').execute(message, args);
+                break;
             case 'help':
                 client.commands.get('help').execute(message, args);
                 break;
