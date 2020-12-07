@@ -1,11 +1,11 @@
 const Discord = require('discord.js');
-
 const client = new Discord.Client();
 
 let config = require('./data/config.json');
 const token = config.token;
 
 const fs = require('fs');
+const pollHandler = require('./modules/poll-handler.js');
 
 client.commands = new Discord.Collection();
 
@@ -18,6 +18,8 @@ for(const file of commandFiles) {
 client.once('ready', () => {
     console.log('Bot Online');
 });
+
+//client.setInterval(pollHandler.updatePolls, 250);
 
 client.on('message', message => {
     const prefix = config.prefix;
@@ -51,6 +53,9 @@ client.on('message', message => {
                 break;
             case 'setprefix':
                 client.commands.get('setprefix').execute(message, args);
+                break;
+            case 'test':
+                client.commands.get('test').execute(message, args);
                 break;
             case 'writetojson':
                 client.commands.get('writetojson').execute(message, args);

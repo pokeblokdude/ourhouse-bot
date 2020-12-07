@@ -1,11 +1,12 @@
 const fs = require('fs');
 const { MessageEmbed } = require("discord.js");
+const parser = require('./../modules/command-parser.js')
 
 module.exports = {
     name: '[LOCKED] Poll',
     command: 'poll',
-    description: "Stars a poll using command arguments. Currently does nothing.",
-    usage: '`poll "[title]" "[option 1]"..."[option n]"`',
+    description: "Stars a poll using command arguments, up to a maximum of 6 voting options. Poll lasts indefinitely unless a duration is specified. Currently only supports 1 active poll per channel.",
+    usage: '`poll {duration (seconds)} "[title]" "[option 1]"..."[option 6]"`',
     execute(message, args) {
         if(args.length < 2) {
             message.channel.send(`Usage: ${this.usage}`);
@@ -14,43 +15,19 @@ module.exports = {
         //               Engineer' (Our House) = 784934880433143809, "Admin" (Bot Testing) = 735229898871799971
         if(message.member.roles.cache.find(r => r.id === '784934880433143809' || '735229898871799971')) {
             console.log(args);
-            // Turn [arg1, arg2, arg3, arg4, ... , argn] (array of words) into [title, option1, option2, ... , optionn] (array of strings)
-            const pollargs = args.reduce(function(acc, val) {
-                if(val.startsWith("\"")) {
-                    if(acc.instring) {
-                        acc.validsyntax = false;
-                    }
-                    else {
-                        let str = val.slice(1);
-                        if(!val.endsWith("\"")) {
-                            acc.instring = true;
-                        }
-                        else {
-                            str = str.substring(0, str.length-1);
-                        }
-                        acc.data.push(str);
-                        acc.counter += 1;
-                    }
-                }
-                else if(val.endsWith("\"")) {
-                    if(!acc.instring) {
-                        acc.validsyntax = false;
-                    }
-                    else {
-                        acc.data[acc.counter] = acc.data[acc.counter].concat(' ' + val.substring(0, val.length-1));
-                        acc.instring = false;
-                    }
-                }
-                else {
-                    acc.data[acc.counter] = acc.data[acc.counter].concat(' ' + val);
-                }
-                return acc;
-            }, { data: [], counter: -1, instring: false, validsyntax: true });
-
+            let duration = isNaN(Number(args[0])) ? undefined : args.shift();
+            console.log(args);
+            // Turn [word, word, word, ... word] (array of words) into [arg1, arg2, ... argn] (array of arguments)
+            const pollargs = parser.parseStrings(args);
             console.log(pollargs);
+
             // Check if the command had valid syntax
             if(!pollargs.validsyntax) {
                 message.channel.send(`Usage: ${this.usage}`);
+                return;
+            }
+            if(pollargs.data.length > 7) {
+                message.channel.send('Please provide 6 or fewer voting options.');
                 return;
             }
             
@@ -63,13 +40,17 @@ module.exports = {
             }
 
             let polldata = {
-                title: pollargs.data.shift()
+                title: pollargs.data.shift(),
+                timestamp: Date.now(),
+                duration: duration
             };
             for(let i = 0; i < pollargs.data.length; i++) {
                 Object.defineProperty(polldata, i, {
                     value: {
                         name: pollargs.data[i],
-                        percentage: undefined
+                        text: "",
+                        percentage: 0,
+                        votes: 0
                     },
                     writable: true,
                     configurable: true,
@@ -90,9 +71,17 @@ module.exports = {
                 enumerable: true
             });
             
-            fs.writeFile('./data/polls.json', JSON.stringify(polljson, null, 4), (err) => { if(err) { throw err; } });
-            const embed = new MessageEmbed().setTitle(polldata.title).setDescription();
-            message.channel.send(embed);
+            
+            const embed = new MessageEmbed()
+                .setAuthor((message.member.nickname || message.author.username), message.author.displayAvatarURL())
+                .setTitle(polldata.title)
+                .setDescription();
+            message.channel.send(embed)
+                .then(msg => {
+                    Object.defineProperty(polljson[message.channel.id], "messageid", { value: msg.id, writable: true, configurable: true, enumerable: true });
+                    fs.writeFile('./data/polls.json', JSON.stringify(polljson, null, 4), (err) => { if(err) { throw err; } });
+                });
+            
         }
         else {
             message.channel.send("Insufficient permissions.")
