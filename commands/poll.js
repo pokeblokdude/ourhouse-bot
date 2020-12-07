@@ -14,9 +14,7 @@ module.exports = {
         }
         //               Engineer' (Our House) = 784934880433143809, "Admin" (Bot Testing) = 735229898871799971
         if(message.member.roles.cache.find(r => r.id === '784934880433143809' || '735229898871799971')) {
-            console.log(args);
             let duration = isNaN(Number(args[0])) ? undefined : args.shift();
-            console.log(args);
             // Turn [word, word, word, ... word] (array of words) into [arg1, arg2, ... argn] (array of arguments)
             const pollargs = parser.parseStrings(args);
             console.log(pollargs);
@@ -33,7 +31,6 @@ module.exports = {
             
             // Actual data from the polls.json file
             let polljson = JSON.parse(fs.readFileSync('./data/polls.json'));
-            console.log(polljson);
             if(JSON.parse(polljson.hasOwnProperty(message.channel.id))){
                 message.channel.send('This channel already has an active poll!');
                 return;
