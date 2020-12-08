@@ -32,7 +32,7 @@ module.exports = {
         for(let i = 0; i < namelist.length; i++) {
             if(i === 0) {
                 embed.setDescription(
-                    embed.description.concat(`Prefix: \`${prefix}\` \n\n`)
+                    embed.description.concat(`Prefix: \`${prefix}\` \n\nParameters:\n\`[]\` signifies a parameter.\n\`{}\` signifies an optional parameter.\nDo not include these symbols inside your actual command.\n\`"[]"\` indicates you must place the parameter inside of quotation marks.\n\n`)
                 );
             }
             embed.setDescription(

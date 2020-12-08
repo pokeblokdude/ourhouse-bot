@@ -5,7 +5,7 @@ const parser = require('./../modules/command-parser.js')
 module.exports = {
     name: '[LOCKED] Poll',
     command: 'poll',
-    description: "Stars a poll using command arguments, up to a maximum of 6 voting options. Poll lasts indefinitely unless a duration is specified. Currently only supports 1 active poll per channel.",
+    description: "Starts a poll using command arguments, up to a maximum of 6 voting options. Poll lasts indefinitely unless a duration is specified. Currently only supports 1 active poll per channel.",
     usage: '`poll {duration (seconds)} "[title]" "[option 1]"..."[option 6]"`',
     execute(message, args) {
         if(args.length < 2) {
