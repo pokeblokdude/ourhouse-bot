@@ -19,7 +19,7 @@ client.once('ready', () => {
     console.log('Bot Online');
 });
 
-//client.setInterval(pollHandler.updatePolls, 250);
+//setInterval(pollHandler.updatePolls, 10000, client);
 
 client.on('message', message => {
     const prefix = config.prefix;
@@ -74,3 +74,4 @@ client.on('message', message => {
 
 // ^^^ PUT CODE ABOVE ^^^ //
 client.login(token);
+pollHandler.updatePolls(client);

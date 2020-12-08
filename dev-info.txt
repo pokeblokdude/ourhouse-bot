@@ -1,3 +1,5 @@
 ===== Info for developing commands =====
-    - commands MUST have a .command property
-        - commands will still work even with other properties missing, although only default info will be listed in the !help command
+    - Commands MUST have a .command property
+        - Commands will still work even with other properties missing, although only default info will be listed in the !help command
+
+    - The Discord API has a rate-limit of about 16-17 requests per second

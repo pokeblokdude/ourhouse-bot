@@ -39,19 +39,21 @@ module.exports = {
             let polldata = {
                 title: pollargs.data.shift(),
                 timestamp: Date.now(),
-                duration: duration
+                duration: duration,
+                layoutComplete: false 
             };
+            Object.defineProperty(polldata, "options", {
+                value: [],
+                writable: true,
+                configurable: true,
+                enumerable: true
+            });
             for(let i = 0; i < pollargs.data.length; i++) {
-                Object.defineProperty(polldata, i, {
-                    value: {
-                        name: pollargs.data[i],
-                        text: "",
-                        percentage: 0,
-                        votes: 0
-                    },
-                    writable: true,
-                    configurable: true,
-                    enumerable: true
+                polldata.options.push({
+                    name: pollargs.data[i],
+                    text: "",
+                    percentage: 0,
+                    votes: 0
                 });
             }
 
@@ -71,8 +73,7 @@ module.exports = {
             
             const embed = new MessageEmbed()
                 .setAuthor((message.member.nickname || message.author.username), message.author.displayAvatarURL())
-                .setTitle(polldata.title)
-                .setDescription();
+                .setTitle(polldata.title);
             message.channel.send(embed)
                 .then(msg => {
                     Object.defineProperty(polljson[message.channel.id], "messageid", { value: msg.id, writable: true, configurable: true, enumerable: true });
