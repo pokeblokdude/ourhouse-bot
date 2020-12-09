@@ -21,7 +21,6 @@ client.once('ready', () => {
     setInterval(pollHandler.updatePolls, 2500, client);
 });
 
-// TODO: delete the message of the command where appropriate
 client.on('message', message => {
     const prefix = config.prefix;
     const msg = message.content;

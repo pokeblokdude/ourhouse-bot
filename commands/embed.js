@@ -11,5 +11,6 @@ module.exports = {
             .setColor('00ff0d')
             .setDescription("WOW!");
         message.channel.send(embed);
+        message.delete();
     }
 }

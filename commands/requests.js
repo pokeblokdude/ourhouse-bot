@@ -27,6 +27,7 @@ module.exports = {
         embed.setDescription(str)
 
         message.channel.send(embed);
+        message.delete();
 
     }
 }

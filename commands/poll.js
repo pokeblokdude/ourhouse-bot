@@ -102,5 +102,6 @@ module.exports = {
                 fs.writeFile('./data/polls.json', JSON.stringify(polljson, null, 4), (err) => { if(err) { throw err; } });
             })
             .catch(e => console.log(e));
+        message.delete();
     }
 }

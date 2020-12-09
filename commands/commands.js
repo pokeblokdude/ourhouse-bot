@@ -12,6 +12,7 @@ module.exports = {
         if(message.member.roles.cache.get('784934880433143809') || message.member.roles.cache.get('735229898871799971')) {
             let embed = helper.constructList();
             message.channel.send(embed);
+            message.delete();
         }
         else {
             message.channel.send('Insufficient permissions.')
