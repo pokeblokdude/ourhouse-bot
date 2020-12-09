@@ -9,6 +9,7 @@
   "author": "Alex Howe",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^12.2.0"
+    "@discordjs/opus": "^0.3.3",
+    "discord.js": "^12.5.1"
   }
 }

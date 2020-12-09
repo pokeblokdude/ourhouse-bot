@@ -17,8 +17,8 @@ for(const file of commandFiles) {
 
 client.once('ready', () => {
     console.log('Bot Online');
-    pollHandler.updatePolls(client);
-    //setInterval(pollHandler.updatePolls, 2000, client);
+    //pollHandler.updatePolls(client);
+    setInterval(pollHandler.updatePolls, 2500, client);
 });
 
 client.on('message', message => {

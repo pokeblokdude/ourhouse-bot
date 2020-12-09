@@ -103,14 +103,14 @@ module.exports = {
                 let newEmbed = new MessageEmbed()
                     .setTitle(oldEmbed.title)
                     .setAuthor(oldEmbed.author.name, oldEmbed.author.iconURL)
-                    .setFooter(shouldEndPoll ? "Poll has ended." : (pollObj.timed ? `Time remaining: ${timeRemaining}` : undefined))
+                    .setFooter(shouldEndPoll ? "Poll has ended." : (pollObj.timed ? `Time remaining: ${timeRemaining}` : "Untimed poll."))
                     .setDescription(embedDesc);
 
                 // Edit the message with the new embed
                 // message.edit() CANNOT EDIT AN EMBED. IT CAN ONLY REPLACE IT WITH ANOTHER EMBED
                 messageObj.edit(newEmbed);
                 if(shouldEndPoll) {
-                    messageObj.channel.send(`Ended poll: ${pollObj.title}`)
+                    messageObj.channel.send(`Ended poll: "${pollObj.title}"`)
                 }
             }
             if(shouldEndPoll) {
