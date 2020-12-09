@@ -3,6 +3,7 @@ module.exports = {
     // Example: ['"That', 'was', 'pog', 'dude."', '"Wow."']  ===>  ['That was pog dude.', 'Wow.']
     // Returns an object with a data (the actual array) and validsyntax variable (whether the resulting array is useable or not)
     parseStrings(args) {
+        console.log(args);
         const strings = args.reduce(function(acc, val) {
             if(val.startsWith("\"")) {
                 if(acc.instring) {
@@ -30,7 +31,12 @@ module.exports = {
                 }
             }
             else {
-                acc.data[acc.counter] = acc.data[acc.counter].concat(' ' + val);
+                if(acc.data.length) {
+                    acc.data[acc.counter] = acc.data[acc.counter].concat(' ' + val);
+                }
+                else {
+                    acc.validsyntax = false;
+                }
             }
             return acc;
         }, { data: [], counter: -1, instring: false, validsyntax: true });

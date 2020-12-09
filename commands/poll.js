@@ -10,7 +10,7 @@ const optionEmotes = {
     4: "5️⃣",
     5: "6️⃣"
 };
-// TODO: messages with completely random syntax crash the bot
+
 // TODO: binary polls
 module.exports = {
     name: 'Poll',

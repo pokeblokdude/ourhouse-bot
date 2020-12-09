@@ -2,11 +2,6 @@ const fs = require('fs');
 const { MessageEmbed } = require("discord.js");
 const helper = require('./help.js');
 
-const config = require('./../data/config.json');
-const help = require('./help.js');
-const prefix = config.prefix;
-
-// TODO: switch from [LOCKED] to *
 module.exports = {
     name: 'Commands*',
     command: 'commands',
