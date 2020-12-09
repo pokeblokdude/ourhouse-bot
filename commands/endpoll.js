@@ -4,7 +4,7 @@ const pollHandler = require('./../modules/poll-handler.js');
 module.exports = {
     name: '[LOCKED] End Poll',
     command: 'endpoll',
-    description: "Ends the active poll in the current channel, if there is one.",
+    description: "Ends the active poll in the current channel, if there is one. Currently only useable by Engineers.",
     usage: '`endpoll`',
     execute(message, args) {
         //               Engineer' (Our House) = 784934880433143809, "Admin" (Bot Testing) = 735229898871799971

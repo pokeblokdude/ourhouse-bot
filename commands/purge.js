@@ -1,7 +1,7 @@
 module.exports = {
     name: '[LOCKED] Purge',
     command: 'purge',
-    description: "Delete a specified number of messages, up to a maximum of 100 at a time.",
+    description: "Delete a specified number of messages, up to 100 at a time.",
     usage: "`purge [number of messages]`",
     execute(message, args) {
         //               Engineer' (Our House) = 784934880433143809, "Admin" (Bot Testing) = 735229898871799971

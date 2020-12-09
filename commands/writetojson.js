@@ -3,7 +3,7 @@ const fs = require('fs');
 module.exports = {
     name: '[LOCKED] Write to JSON',
     command: 'writetojson',
-    description: "Only for testing. Writes to a JSON file using a key/value pair.",
+    description: "Only for testing.",
     usage: "`writetojson [key] [value]`",
     execute(message, args) {
         //               Engineer' (Our House) = 784934880433143809, "Admin" (Bot Testing) = 735229898871799971

@@ -29,42 +29,11 @@ client.on('message', message => {
         const args = msg.slice(prefix.length).split(' ');
         const command = args.shift().toLowerCase();
 
-        switch(command) {
-            case 'ding':
-                client.commands.get('ding').execute(message, args);
-                break;
-            case 'embed':
-                client.commands.get('embed').execute(message, args);
-                break;
-            case 'endpoll':
-                client.commands.get('endpoll').execute(message, args);
-                break;
-            case 'help':
-                client.commands.get('help').execute(message, args);
-                break;
-            case 'nukepolls':
-                client.commands.get('nukepolls').execute(message, args);
-                break;
-            case 'ping':
-                client.commands.get('ping').execute(message, args);
-                break;
-            case 'poll':
-                client.commands.get('poll').execute(message, args);
-                break;
-            case 'purge':
-                client.commands.get('purge').execute(message, args);
-                break;
-            case 'setprefix':
-                client.commands.get('setprefix').execute(message, args);
-                break;
-            case 'test':
-                client.commands.get('test').execute(message, args);
-                break;
-            case 'writetojson':
-                client.commands.get('writetojson').execute(message, args);
-                break;
-            default:
-                message.channel.send(`Use \`${prefix}help\` to be sent a list of all commands.`);
+        if(client.commands.has(command)) {
+            client.commands.get(command).execute(message, args);
+        }
+        else {
+            message.channel.send(`Use \`${prefix}help\` to be sent a list of all commands.`);
         }
     } 
     else {

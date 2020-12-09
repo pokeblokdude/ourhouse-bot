@@ -36,7 +36,7 @@ module.exports = {
                 );
             }
             embed.setDescription(
-                embed.description.concat(`__**${namelist[i]}**__ \n*${desclist[i]}* \nUsage: ${usagelist[i]}\n\n`)
+                embed.description.concat(`> __**${namelist[i]}**__ \n> *${desclist[i]}* \n> Usage: ${usagelist[i]}\n\n`)
             );
         }
         message.author.send(embed).then(message.channel.send('DMed a list of commands!')).catch(() => message.reply("Unable to send DM."));

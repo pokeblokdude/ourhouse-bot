@@ -36,5 +36,17 @@ module.exports = {
         }, { data: [], counter: -1, instring: false, validsyntax: true });
 
         return { data: strings.data, validsyntax: strings.validsyntax };
+    },
+    // Turn [word, word, word, ... word] into "arg"
+    // Example: ['haha', 'yeah', 'dude']  ===>  ['haha yeah dude']
+    // Returns a string
+    parseSingle(args) {
+        const string = args.reduce(function(acc, val) {
+            acc.data = acc.counter === 0 ? acc.data.concat(val) : acc.data.concat(' ' + val);
+            acc.counter += 1;
+            return acc;
+        }, { data: "", counter: 0 });
+
+        return string.data;
     }
 }

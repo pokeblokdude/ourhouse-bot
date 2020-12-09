@@ -1,8 +1,6 @@
 const fs = require('fs');
 const timeConverter = require('./convert-timestamp.js');
-const polls = require('./../data/polls.json');
 const { MessageEmbed } = require('discord.js');
-const poll = require('../commands/poll.js');
 
 const optionEmotes = {
     0: "1️⃣",
@@ -67,7 +65,7 @@ module.exports = {
                 let totalVotes = 0;
                 for(let i = 0; i < pollObj.options.length; i++) {
                     let r = await messageObj.reactions.cache.get(pollObj.options[i].reaction);
-                    console.log(r.count, r.users.cache.array());
+                    console.log(r.count);
                     pollObj.options[i].votes = r.count - 1;
                     totalVotes += pollObj.options[i].votes;
                     pollObj.totalVotes = totalVotes;
