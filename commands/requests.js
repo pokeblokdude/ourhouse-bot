@@ -18,7 +18,6 @@ module.exports = {
         for(const r in json) {
             requests.push(json[r]);
         }
-        console.log(requests);
 
         let embed = new MessageEmbed().setTitle('Feature Requests for Our House Bot');
         let str = ""

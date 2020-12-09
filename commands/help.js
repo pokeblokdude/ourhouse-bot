@@ -4,6 +4,7 @@ const { MessageEmbed } = require("discord.js");
 const config = require('./../data/config.json');
 const prefix = config.prefix;
 
+// TODO: switch from [LOCKED] to *
 module.exports = {
     name: 'Help',
     command: 'help',
