@@ -13,5 +13,6 @@ module.exports = {
             .setFooter('React to vote!');
 
         message.channel.send(embed).then(msg => message.channel.send("Poll message id: " + msg.id));
+        //message.channel.send('test');
     }
 }

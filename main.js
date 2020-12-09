@@ -17,9 +17,9 @@ for(const file of commandFiles) {
 
 client.once('ready', () => {
     console.log('Bot Online');
+    pollHandler.updatePolls(client);
+    //setInterval(pollHandler.updatePolls, 2000, client);
 });
-
-//setInterval(pollHandler.updatePolls, 10000, client);
 
 client.on('message', message => {
     const prefix = config.prefix;
@@ -74,4 +74,4 @@ client.on('message', message => {
 
 // ^^^ PUT CODE ABOVE ^^^ //
 client.login(token);
-pollHandler.updatePolls(client);
+
