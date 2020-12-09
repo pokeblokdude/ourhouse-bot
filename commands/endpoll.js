@@ -8,7 +8,7 @@ module.exports = {
     usage: '`endpoll`',
     execute(message, args) {
         //               Engineer' (Our House) = 784934880433143809, "Admin" (Bot Testing) = 735229898871799971
-        if(message.member.roles.cache.find(r => r.id === '784934880433143809' || '735229898871799971')) {
+        if(message.member.roles.cache.get('784934880433143809') || message.member.roles.cache.get('735229898871799971')) {
             let polls = JSON.parse(fs.readFileSync('./data/polls.json'));
             if(polls.hasOwnProperty(message.channel.id)) {
                 let pollname = polls[message.channel.id].title;

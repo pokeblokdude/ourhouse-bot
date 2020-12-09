@@ -5,7 +5,7 @@ module.exports = {
     usage: "`purge [number of messages]`",
     execute(message, args) {
         //               Engineer' (Our House) = 784934880433143809, "Admin" (Bot Testing) = 735229898871799971
-        if(message.member.roles.cache.find(r => r.id === '784934880433143809' || '735229898871799971')) {
+        if(message.member.roles.cache.get('784934880433143809') || message.member.roles.cache.get('735229898871799971')) {
             if(args.length !== 1) {
                 message.channel.send(`Usage: ${this.usage}`);
                 return;

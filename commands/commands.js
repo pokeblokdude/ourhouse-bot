@@ -9,7 +9,7 @@ module.exports = {
     usage: '`commands`',
     execute(message, args) {
         //               Engineer' (Our House) = 784934880433143809, "Admin" (Bot Testing) = 735229898871799971
-        if(message.member.roles.cache.find(r => r.id === '784934880433143809' || '735229898871799971')) {
+        if(message.member.roles.cache.get('784934880433143809') || message.member.roles.cache.get('735229898871799971')) {
             let embed = helper.constructList();
             message.channel.send(embed);
         }
