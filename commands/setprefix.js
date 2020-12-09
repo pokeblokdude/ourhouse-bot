@@ -2,9 +2,9 @@ const fs = require('fs');
 const config = require('./../data/config.json');
 
 module.exports = {
-    name: '[LOCKED] Set Prefix',
+    name: 'Set Prefix*',
     command: 'setprefix',
-    description: "Changes the command prefix. Only useable by Maids and Engineers.",
+    description: "Changes the command prefix.",
     usage: "`setprefix [prefix]`",
     execute(message, args) {
         if(args.length !== 1) {

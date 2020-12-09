@@ -1,9 +1,9 @@
 const fs = require('fs');
 
 module.exports = {
-    name: '[LOCKED] Nuke Polls',
+    name: 'Nuke Polls*',
     command: 'nukepolls',
-    description: "Cancels all polls in all channels. Obviously only useable by Engineers.",
+    description: "Cancels all polls in all channels.",
     usage: '`nukepolls`',
     execute(message, args) {
         //               Engineer' (Our House) = 784934880433143809, "Admin" (Bot Testing) = 735229898871799971

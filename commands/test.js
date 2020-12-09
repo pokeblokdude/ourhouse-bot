@@ -1,7 +1,7 @@
 const { MessageEmbed } = require('discord.js');
 
 module.exports = {
-    name: '[LOCKED] Test',
+    name: 'Test*',
     command: 'test',
     description: "Temporary.",
     usage: '`test`',

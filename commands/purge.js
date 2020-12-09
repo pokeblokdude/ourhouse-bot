@@ -1,5 +1,5 @@
 module.exports = {
-    name: '[LOCKED] Purge',
+    name: 'Purge*',
     command: 'purge',
     description: "Delete a specified number of messages, up to 100 at a time.",
     usage: "`purge [number of messages]`",
