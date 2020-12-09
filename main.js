@@ -23,21 +23,15 @@ client.once('ready', () => {
 
 client.on('message', message => {
     const prefix = config.prefix;
-    // #engine-room = 784935785068756992, bot testing server #general = 735222619909128356
-    if((message.channel.id === '784935785068756992' || message.channel.id === '735222619909128356') && message.content.startsWith(prefix) && !message.author.bot) {
-        const msg = message.content;
-        const args = msg.slice(prefix.length).split(' ');
-        const command = args.shift().toLowerCase();
+    const msg = message.content;
+    const args = msg.slice(prefix.length).split(' ');
+    const command = args.shift().toLowerCase();
 
-        if(client.commands.has(command)) {
-            client.commands.get(command).execute(message, args);
-        }
-        else {
-            message.channel.send(`Use \`${prefix}help\` to be sent a list of all commands.`);
-        }
-    } 
+    if(client.commands.has(command)) {
+        client.commands.get(command).execute(message, args);
+    }
     else {
-        return;
+        message.channel.send(`Use \`${prefix}help\` to be sent a list of all commands.`);
     }
 });
 
