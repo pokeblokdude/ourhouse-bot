@@ -67,7 +67,7 @@ module.exports = {
                 let info = commands[index];
                 let embed = new MessageEmbed()
                     .setTitle('Command: ' + info.name)
-                    .setDescription(`Description:\n> *${info.description}*\n\nUsage: ${info.usage}`)
+                    .setDescription(`Description:\n> *${info.description}*\n\nUsage: ${prefix}${info.usage}`)
                     .setFooter('Use `!help` to be sent a list of all commands.');
                 message.channel.send(embed);
             }

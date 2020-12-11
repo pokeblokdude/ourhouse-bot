@@ -3,6 +3,8 @@ const { MessageEmbed } = require("discord.js");
 const parser = require('./../modules/command-parser.js');
 
 // TODO: figure out how to delete command while keeping user info (maybe just store user?)
+// TODO: time remaining
+// BUG: people spamming reactions on and off literally tanks bot performance
 module.exports = {
     name: 'Recruit*',
     command: 'recruit',

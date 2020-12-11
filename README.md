@@ -6,6 +6,7 @@ If you're someone I know and you want to develop for this bot, check dev-info.tx
 
 ## Current features
     Polls with live updates
+    Recruiting with live updates
     Bulk message deletion
     Feature requests
 
