@@ -15,6 +15,7 @@ module.exports = {
         let str = parser.parseSingle(args);
         let obj = {
             request: str,
+            beingWorkedOn: false,
             user: {
                 name: (message.member.nickname || message.author.username),
                 tag: message.author.tag,

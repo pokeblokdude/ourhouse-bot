@@ -12,6 +12,7 @@ const optionEmotes = {
 };
 
 // TODO: binary polls
+// LONGTERM: switch from poll loop to awaitReactions callback
 module.exports = {
     name: 'Poll',
     command: 'poll',

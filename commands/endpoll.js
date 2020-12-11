@@ -14,6 +14,7 @@ module.exports = {
                 let pollname = polls[message.channel.id].title;
                 pollHandler.endPoll(message.channel.id);
                 message.channel.send(`Ended poll "${pollname}"`);
+                message.delete();
             }
             else {
                 message.channel.send('There are no active polls in this channel.')

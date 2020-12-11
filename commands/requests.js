@@ -19,10 +19,10 @@ module.exports = {
             requests.push(json[r]);
         }
 
-        let embed = new MessageEmbed().setTitle('Feature Requests for Our House Bot');
+        let embed = new MessageEmbed().setTitle('Feature Requests for Our House Bot').setColor('#59A833');
         let str = ""
         for(let i = 0; i < requests.length; i++) {
-            str = str.concat(`> **${requests[i].request}**\n> Requested by: ${requests[i].user.name} (${requests[i].user.tag})\n\n`);
+            str = str.concat(`> **${requests[i].request}**\n> Requested by: ${requests[i].user.name} (${requests[i].user.tag})\n> *Currently being worked on:* \`${requests[i].beingWorkedOn}\`\n\n`);
         }
         embed.setDescription(str)
 
