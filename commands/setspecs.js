@@ -14,6 +14,7 @@ module.exports = {
         }
         const json = JSON.parse(fs.readFileSync('./data/specs.json'));
         const obj = {
+            listID: args[0],
             memory: [],
             storage: [],
             monitor: []

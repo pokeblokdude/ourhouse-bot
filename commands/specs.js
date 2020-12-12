@@ -14,13 +14,12 @@ module.exports = {
 
         const specData = JSON.parse(fs.readFileSync('./data/specs.json'));
         const userId = args.length ? args[0].substring(3, args[0].length-1) : message.author.id;
-        console.log(userId);
         const member = message.channel.members.get(userId);
         const avatarURL = member.user.displayAvatarURL();
 
         let obj = specData[userId];
         if(!obj) {
-            message.channel.send('User has not set their specs.');
+            message.channel.send('User has not set their specs. Use !setspecs to link a PCPartpicker list.');
             return;
         }
         
@@ -50,6 +49,7 @@ module.exports = {
         let embed = new MessageEmbed()
             .setAuthor((member.nickname || member.user.username), avatarURL)
             .setTitle(`PC Specs`)
+            .setURL(`https://pcpartpicker.com/list/${obj.listID}`)
             .setThumbnail('https://b.kisscc0.com/20180705/tjq/kisscc0-integrated-circuits-chips-central-processing-uni-generic-chip-5b3e6d949b77d7.1828025815308179406368.png')
             .setDescription(str)
             .setFooter(`Requested by: ${(message.member.nickname || message.author.username)}`, message.author.displayAvatarURL());
