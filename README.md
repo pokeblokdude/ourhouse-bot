@@ -7,9 +7,9 @@ If you're someone I know and you want to develop for this bot, check dev-info.tx
 ## Current features
     Polls with live updates
     Recruiting with live updates
+    Display PC specs from linked PCPartpicker lists
     Bulk message deletion
     Feature requests
 
 ## Planned Features
     Voice channel music playback
-    Display PC info of user (opt in?)
