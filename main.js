@@ -28,11 +28,13 @@ client.on('message', message => {
         const args = msg.slice(prefix.length).split(' ');
         const command = args.shift().toLowerCase();
 
-        if(client.commands.has(command)) {
-            client.commands.get(command).execute(message, args);
-        }
-        else {
-            message.channel.send(`Use \`${prefix}help\` to be sent a list of all commands.`);
+        if(command.length) {
+            if(client.commands.has(command)) {
+                client.commands.get(command).execute(message, args);
+            }
+            else {
+                message.channel.send(`Use \`${prefix}help\` to be sent a list of all commands.`);
+            }
         }
     }
 });
