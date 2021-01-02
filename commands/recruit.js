@@ -2,7 +2,6 @@ const fs = require('fs');
 const { MessageEmbed } = require("discord.js");
 const parser = require('./../modules/command-parser.js');
 
-// TODO: time remaining
 // BUG: people spamming reactions on and off literally tanks bot performance
 module.exports = {
     name: 'Recruit*',
@@ -44,7 +43,7 @@ module.exports = {
                 if(obj.recruitees.length) {
                     let str = `**People:**\n`;
                     obj.recruitees.forEach(user => {
-                        str = str.concat(`> @${user.tag}\n`)
+                        str = str.concat(`> <@!${user.id}>\n`)
                     });
                     let newEmbed = new MessageEmbed()
                         .setAuthor((member.nickname || user.username), user.displayAvatarURL())
@@ -60,7 +59,7 @@ module.exports = {
                 if(obj.recruitees.length) {
                     let str = `**People:**\n`;
                     obj.recruitees.forEach(user => {
-                        str = str.concat(`> @${user.tag}\n`)
+                        str = str.concat(`> <@!${user.id}>\n`)
                     });
                     let newEmbed = new MessageEmbed()
                         .setAuthor((member.nickname || user.username), user.displayAvatarURL())
