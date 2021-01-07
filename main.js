@@ -17,6 +17,12 @@ for(const file of commandFiles) {
 
 client.once('ready', () => {
     console.log('Bot Online');
+    client.user.setPresence({
+        activity: {
+            name: `Use !help`,
+            type: 'PLAYING'
+        }
+    });
     //pollHandler.updatePolls(client);
     setInterval(pollHandler.updatePolls, 2500, client);
 });
