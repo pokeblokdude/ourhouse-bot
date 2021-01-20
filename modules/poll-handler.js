@@ -108,7 +108,7 @@ module.exports = {
                 // message.edit() CANNOT EDIT AN EMBED. IT CAN ONLY REPLACE IT WITH ANOTHER EMBED
                 messageObj.edit(newEmbed);
                 if(shouldEndPoll) {
-                    messageObj.channel.send(`Ended poll: "${pollObj.title}"`)
+                    messageObj.channel.send(`Ended poll: "${pollObj.title}"\n${messageObj.url}`);
                 }
             }
             if(shouldEndPoll) {
