@@ -13,7 +13,7 @@ module.exports = {
             if(polls.hasOwnProperty(message.channel.id)) {
                 let pollname = polls[message.channel.id].title;
                 pollHandler.endPoll(message.channel.id);
-                message.channel.send(`Ended poll "${pollname}"`);
+                message.channel.send(`Ended poll "${pollname}"\n${polls[message.channel.id].url}`);
                 message.delete();
             }
             else {

@@ -97,6 +97,12 @@ module.exports = {
                     configurable: true, 
                     enumerable: true 
                 });
+                Object.defineProperty(polljson[message.channel.id], "url", {
+                    value: msg.url,
+                    writable: true,
+                    enumerable: true,
+                    configurable: true
+                });
                 console.log(`Created poll:`);
                 console.log(polljson[message.channel.id])
 
