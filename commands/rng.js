@@ -5,7 +5,7 @@ module.exports = {
     usage: '`rng {min} [max]`',
     execute(message, args) {
         if(args.length < 1 || args.length > 2) {
-            message.channel.send(`${this.usage}`);
+            message.channel.send(`Usage: ${this.usage}`);
             return;
         }
 

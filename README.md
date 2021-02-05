@@ -9,6 +9,7 @@ If you're someone I know and you want to develop for this bot, check dev-info.tx
     Recruiting with live updates
     Display PC specs from linked PCPartpicker lists
     Bulk message deletion
+    Random number generator
     Feature requests
 
 ## Planned Features
