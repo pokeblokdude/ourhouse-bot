@@ -34,7 +34,7 @@ client.on('message', message => {
         const args = msg.slice(prefix.length).split(' ');
         const command = args.shift().toLowerCase();
 
-        if(command.length) {
+        if(command.length && command[0] !== '!') {
             if(client.commands.has(command)) {
                 client.commands.get(command).execute(message, args);
             }
