@@ -4,7 +4,7 @@ const parser = require('./../modules/command-parser.js');
 
 // BUG: people spamming reactions on and off literally tanks bot performance
 module.exports = {
-    name: 'Recruit*',
+    name: 'Recruit',
     command: 'recruit',
     description: "Sends a message that people can react to to sign up for an event.",
     category: "general",
