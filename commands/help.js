@@ -8,6 +8,7 @@ module.exports = {
     name: 'Help',
     command: 'help',
     description: "DMs you a list of all commands, or sends info for a specified command.",
+    category: "general",
     usage: '`help {command}`',
     constructList() {
         let namelist = [];

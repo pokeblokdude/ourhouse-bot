@@ -6,6 +6,7 @@ module.exports = {
     name: 'Commands*',
     command: 'commands',
     description: "Sends a list of commands to the current channel. Non-Maids use !help.",
+    category: "admin",
     usage: '`commands`',
     execute(message, args) {
         //               Engineer' (Our House) = 784934880433143809, "Admin" (Bot Testing) = 735229898871799971

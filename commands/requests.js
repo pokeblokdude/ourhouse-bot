@@ -5,6 +5,7 @@ module.exports = {
     name: 'Requests',
     command: 'requests',
     description: "Sends a list of current feature requests.",
+    category: "general",
     usage: '`requests`',
     execute(message, args) {
         const json = JSON.parse(fs.readFileSync('./data/feature-requests.json'));

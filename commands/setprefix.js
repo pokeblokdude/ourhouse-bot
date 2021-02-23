@@ -5,6 +5,7 @@ module.exports = {
     name: 'Set Prefix*',
     command: 'setprefix',
     description: "Changes the command prefix.",
+    category: "admin",
     usage: "`setprefix [prefix]`",
     execute(message, args) {
         if(args.length !== 1) {

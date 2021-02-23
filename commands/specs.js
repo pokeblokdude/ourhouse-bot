@@ -5,6 +5,7 @@ module.exports = {
     name: 'Specs',
     command: 'specs',
     description: "Sends a list of your PC specs, or the specs of another user.",
+    category: "general",
     usage: '`specs {user}`',
     execute(message, args) {
         if(args.length > 1) {

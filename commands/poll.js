@@ -17,6 +17,7 @@ module.exports = {
     name: 'Poll',
     command: 'poll',
     description: "Starts a poll using command arguments, up to a maximum of 6 voting options. Poll lasts 24hrs unless a duration is specified (-1 = no timer). Currently only supports 1 active poll per channel.",
+    category: "general",
     usage: '`poll {seconds} "[title]" "[option 1]"..."[option 6]"`',
     execute(message, args) {
         if(args.length < 2) {

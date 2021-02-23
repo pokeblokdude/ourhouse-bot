@@ -4,6 +4,7 @@ module.exports = {
     name: 'Embed',
     command: 'embed',
     description: "Sends a sample embed.",
+    category: "testing",
     usage: '`embed`',
     execute(message, args) {
         const embed = new MessageEmbed()

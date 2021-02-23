@@ -5,6 +5,7 @@ module.exports = {
     name: 'Request Feature',
     command: 'rf',
     description: "Writes a feature request for the devs to see. PLEASE use !requests before making a request.",
+    category: "general",
     usage: '`rf [feature]`',
     execute(message, args) {
         if(!args.length) {

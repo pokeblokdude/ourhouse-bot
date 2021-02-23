@@ -6,6 +6,7 @@ module.exports = {
     name: 'Set Specs',
     command: 'setspecs',
     description: "Saves your specs from a PCPartpicker list to be shown with !specs.",
+    category: "general",
     usage: '`setspecs [list id]`',
     async execute(message, args) {
         if(args.length !== 1) {

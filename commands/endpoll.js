@@ -5,6 +5,7 @@ module.exports = {
     name: 'End Poll*',
     command: 'endpoll',
     description: "Ends the active poll in the current channel, if there is one.",
+    category: "admin",
     usage: '`endpoll`',
     execute(message, args) {
         //               Engineer' (Our House) = 784934880433143809, "Admin" (Bot Testing) = 735229898871799971

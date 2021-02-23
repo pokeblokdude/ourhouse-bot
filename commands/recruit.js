@@ -7,6 +7,7 @@ module.exports = {
     name: 'Recruit*',
     command: 'recruit',
     description: "Sends a message that people can react to to sign up for an event.",
+    category: "general",
     usage: '`recruit {max people} [event name]`',
     execute(message, args) {
         if(!args.length) {

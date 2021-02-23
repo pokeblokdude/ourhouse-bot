@@ -2,6 +2,7 @@ module.exports = {
     name: 'RNG',
     command: 'rng',
     description: "Picks a random number in a given range (1-max unless a min is specified).",
+    category: "general",
     usage: '`rng {min} [max]`',
     execute(message, args) {
         if(args.length < 1 || args.length > 2) {

@@ -4,6 +4,7 @@ module.exports = {
     name: 'Test*',
     command: 'test',
     description: "Temporary.",
+    category: "testing",
     usage: '`test`',
     execute(message, args) {
         let embed = new MessageEmbed()

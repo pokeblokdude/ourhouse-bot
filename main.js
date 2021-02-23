@@ -34,7 +34,7 @@ client.on('message', message => {
         const args = msg.slice(prefix.length).split(' ');
         const command = args.shift().toLowerCase();
 
-        if(command.length && command[0] !== '!') {
+        if(command.length && command[0] !== prefix) {
             if(client.commands.has(command)) {
                 client.commands.get(command).execute(message, args);
             }
@@ -47,4 +47,3 @@ client.on('message', message => {
 
 // ^^^ PUT CODE ABOVE ^^^ //
 client.login(token);
-

@@ -4,6 +4,7 @@ module.exports = {
     name: 'Nuke Polls*',
     command: 'nukepolls',
     description: "Cancels all polls in all channels.",
+    category: "admin",
     usage: '`nukepolls`',
     execute(message, args) {
         //               Engineer' (Our House) = 784934880433143809, "Admin" (Bot Testing) = 735229898871799971
