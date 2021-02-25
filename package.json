@@ -2,14 +2,15 @@
   "name": "our-house-test",
   "version": "1.0.0",
   "description": "",
-  "main": "main.js",
+  "main": "ourhousebot.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon ourhousebot.js"
   },
   "author": "Alex Howe",
   "license": "ISC",
   "dependencies": {
     "@discordjs/opus": "^0.3.3",
+    "dayjs": "^1.10.4",
     "discord.js": "^12.5.1",
     "pcpartpickerparser": "^2.0.0"
   }

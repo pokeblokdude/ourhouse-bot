@@ -3,9 +3,9 @@ const { MessageEmbed } = require("discord.js");
 module.exports = {
     name: 'Embed',
     command: 'embed',
-    description: "Sends a sample embed.",
-    category: "testing",
-    usage: '`embed`',
+    description: "Sends an embed with specified title and message [CURRENTLY DOESNT WORK]",
+    category: "admin",
+    usage: '`embed []`',
     execute(message, args) {
         const embed = new MessageEmbed()
             .setTitle('Example Embed')

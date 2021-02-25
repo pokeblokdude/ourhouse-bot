@@ -6,6 +6,7 @@ const token = config.token;
 
 const fs = require('fs');
 const pollHandler = require('./modules/poll-handler.js');
+const statTracker = require('./modules/stat-tracker.js');
 
 client.commands = new Discord.Collection();
 
@@ -19,15 +20,16 @@ client.once('ready', () => {
     console.log('Bot Online');
     client.user.setPresence({
         activity: {
-            name: `Use !help`,
+            name: `Use ${config.prefix}help`,
             type: 'PLAYING'
         }
     });
     //pollHandler.updatePolls(client);
-    setInterval(pollHandler.updatePolls, 2500, client);
+    //setInterval(pollHandler.updatePolls, 2500, client);
 });
 
 client.on('message', message => {
+    let isCommand = false;
     const prefix = config.prefix;
     const msg = message.content;
     if(msg.startsWith(prefix)) {
@@ -36,6 +38,7 @@ client.on('message', message => {
 
         if(command.length && command[0] !== prefix) {
             if(client.commands.has(command)) {
+                isCommand = true;
                 client.commands.get(command).execute(message, args);
             }
             else {
@@ -43,6 +46,7 @@ client.on('message', message => {
             }
         }
     }
+    statTracker.update(message, client, isCommand);
 });
 
 // ^^^ PUT CODE ABOVE ^^^ //
