@@ -1,6 +1,7 @@
 const fs = require('fs');
 const timeConverter = require('./convert-timestamp.js');
 const { MessageEmbed } = require('discord.js');
+const dayjs = require('dayjs');
 
 const optionEmotes = {
     0: "1️⃣",
@@ -36,7 +37,7 @@ const addReactions = (message, reactions) => {
 module.exports = {
     updatePolls: async function(client) {
         const polls = JSON.parse(fs.readFileSync('./data/polls.json'));
-        console.log(Date.now() + ' updating polls');
+        console.log(dayjs().toString() + ' updating polls');
         let isEmpty = false;
         if(Object.keys(polls).length === 1) isEmpty = true;
         if(isEmpty) {
