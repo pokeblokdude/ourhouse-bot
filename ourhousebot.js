@@ -25,7 +25,7 @@ client.once('ready', () => {
         }
     });
     //pollHandler.updatePolls(client);
-    //setInterval(pollHandler.updatePolls, 2500, client);
+    setInterval(pollHandler.updatePolls, 2500, client);
 });
 
 client.on('message', message => {
@@ -46,7 +46,7 @@ client.on('message', message => {
             }
         }
     }
-    statTracker.update(message, client, isCommand);
+    //statTracker.update(message, client, isCommand);
 });
 
 // ^^^ PUT CODE ABOVE ^^^ //

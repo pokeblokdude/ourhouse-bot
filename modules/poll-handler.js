@@ -39,7 +39,7 @@ module.exports = {
         const polls = JSON.parse(fs.readFileSync('./data/polls.json'));
         console.log(dayjs().toString() + ' updating polls');
         let isEmpty = false;
-        if(Object.keys(polls).length === 1) isEmpty = true;
+        if(Object.keys(polls).length <= 1) isEmpty = true;
         if(isEmpty) {
             Object.defineProperty(polls, "empty", {
                 value: true,
@@ -124,6 +124,7 @@ module.exports = {
                 });
             }
         }
+        console.log(polls);
         fs.writeFile('./data/polls.json', JSON.stringify(polls, null, 4), (err) => { if(err) { throw err; } });
     },
     endPoll: function(id) {
