@@ -2,7 +2,7 @@ const fs = require('fs');
 const dayjs = require('dayjs');
 const toObject = require('dayjs/plugin/toObject');
 dayjs.extend(toObject);
-const indexer = require('../commands/stats-index');
+const indexer = require('../commands/stats/index');
 
 // 136630089222848513 - my ID
 module.exports = {

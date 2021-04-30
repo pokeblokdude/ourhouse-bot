@@ -1,5 +1,6 @@
 const fs = require('fs');
 const { MessageEmbed } = require("discord.js");
+const { getFilesRecursive } = require('./../modules/file-stuff.js');
 
 const config = require('./../data/config.json');
 const prefix = config.prefix;
@@ -32,11 +33,13 @@ module.exports = {
         let desclist = [];
         let usagelist = [];
 
-        var files = fs.readdirSync('./commands');
-        let commandFiles = files.filter(file => file.endsWith('.js'));
+        const commandFiles = getFilesRecursive('commands');
+        console.log(commandFiles);
+
+        
 
         for(const file of commandFiles) {
-            const command = require(`./${file}`);
+            const command = require(`./${file.replace("commands", ".")}`);
             if(command.hasOwnProperty('category')) {
                 if(command.category === category.toLowerCase()) {
                     namelist.push(command.hasOwnProperty('name') ? command.name : 'unnamed');
