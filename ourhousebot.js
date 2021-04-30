@@ -25,7 +25,7 @@ client.once('ready', () => {
         }
     });
     //pollHandler.updatePolls(client);
-    setInterval(pollHandler.updatePolls, 2500, client);
+    //setInterval(pollHandler.updatePolls, 2500, client);
 });
 
 client.on('message', message => {

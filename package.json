@@ -12,6 +12,7 @@
     "@discordjs/opus": "^0.3.3",
     "dayjs": "^1.10.4",
     "discord.js": "^12.5.1",
+    "nodemon": "^2.0.7",
     "pcpartpickerparser": "^2.0.0"
   }
 }
