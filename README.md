@@ -12,5 +12,10 @@ If you're someone I know and you want to develop for this bot, check dev-info.tx
     Random number generator
     Feature requests
 
+## Work-in-progress Features
+    Server Stats
+    Music-channel-specific commands
+
 ## Planned Features
     Voice channel music playback
+    
