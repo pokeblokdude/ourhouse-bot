@@ -15,7 +15,7 @@ module.exports = {
         let embed = new MessageEmbed()
             .setTitle('OurHouse Bot Commands')
             .setColor('#59A833')
-            .setDescription(`Prefix: \`${prefix}\` \n\nParameters:\n\`[]\`: required parameter.\n\`{}\`: optional parameter.\nDo not include these symbols inside your actual command.\n\n\`"[]"\`: parameter must be inside quotation marks.\n\n**Categories:**`)
+            .setDescription(`Prefix: \`${prefix}\` \n\nParameters:\n\`[]\`: required parameter.\n\`{}\`: optional parameter.\nDo not include these symbols inside your actual command.\n\n\`"[]"\`: parameter must be inside quotation marks.\n\n**Categories:**\n`)
             .setFooter(`Use \`${prefix}help [category]\` to see a detailed list of commands.`)
             ;
         for(const cat in categories) {
@@ -55,7 +55,7 @@ module.exports = {
         for(let i = 0; i < namelist.length; i++) {
             if(i === 0) {
                 embed.setDescription(
-                    embed.description.concat(`Prefix: \`${prefix}\` \n\nParameters:\n\`[]\` signifies a parameter.\n\`{}\` signifies an optional parameter.\nDo not include these symbols inside your actual command.\n\`"[]"\` indicates you must place the parameter inside of quotation marks.\n\nCommands with \`*\` are locked.\n\n`)
+                    embed.description.concat(`Prefix: \`${prefix}\` \n\nParameters:\n\`[]\`: required parameter.\n\`{}\`: optional parameter.\nDo not include these symbols inside your actual command.\n\n\`"[]"\`: parameter must be inside quotation marks.\n\n**Commands:**\n`)
                 );
             }
             embed.setDescription(
