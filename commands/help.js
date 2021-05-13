@@ -34,9 +34,6 @@ module.exports = {
         let usagelist = [];
 
         const commandFiles = getFilesRecursive('commands');
-        console.log(commandFiles);
-
-        
 
         for(const file of commandFiles) {
             const command = require(`./${file.replace("commands", ".")}`);

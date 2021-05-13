@@ -2,10 +2,10 @@ const fs = require('fs');
 
 module.exports = {
     name: "Index",
-    command: "stats-index",
+    command: "index",
     description: "Indexes or resets the index for the current server for use with all stats commands. Only needs to be done once. Use `stats-checkindex` to see if it has already been indexed.",
     category: "stats",
-    usage: '`stats-index`',
+    usage: '`stats index`',
     execute(message, args) {
         const indexes = JSON.parse(fs.readFileSync('./data/index.json'));
         

@@ -1,8 +1,8 @@
 # Our House Server Bot
 
-This is a project I'm working on to learn Discord.js and just to become comfortable with JS in general, applying stuff I learned in my "Programming Methodology" course.
+This is an ongoing project. Mostly adding features as the need arises, but it's also good practice for stuff like working with files, etc.
 
-If you're someone I know and you want to develop for this bot, check dev-info.txt before you do anything.
+It started out as a way to learn Discord.js and just to become comfortable with JS in general, applying stuff I learned in my "Programming Methodology" course.
 
 ## Current features
     Polls with live updates
