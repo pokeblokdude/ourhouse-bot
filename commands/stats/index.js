@@ -7,6 +7,9 @@ module.exports = {
     category: "stats",
     usage: '`stats index`',
     execute(message, args) {
+        message.channel.send("Command is currently being worked on. Check back later.");
+        return;
+
         const indexes = JSON.parse(fs.readFileSync('./data/index.json'));
         
         let guildData = {
