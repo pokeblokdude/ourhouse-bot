@@ -8,24 +8,26 @@ const optionEmotes = {
     2: "3️⃣",
     3: "4️⃣",
     4: "5️⃣",
-    5: "6️⃣"
+    5: "6️⃣",
+    6: "7️⃣",
+    7: "8️⃣",
+    8: "9️⃣",
+    9: "🔟"
 };
 
-// TODO: binary polls
-// LONGTERM: switch from poll loop to awaitReactions callback
 module.exports = {
     name: 'Poll',
     command: 'poll',
-    description: "Starts a poll using command arguments, up to a maximum of 6 voting options. Poll lasts 24hrs unless a duration is specified (-1 = no timer). Currently only supports 1 active poll per channel.",
+    description: "Starts a poll using command arguments, up to a maximum of 10 voting options. Poll lasts 12hrs unless a duration is specified (-1 = no timer). Currently only supports 1 active poll per channel.",
     category: "general",
-    usage: '`poll {seconds} "[title]" "[option 1]"..."[option 6]"`',
+    usage: '`poll {seconds} "[title]" "[option 1]"..."[option 10]"`',
     execute(message, args) {
         if(args.length < 2) {
             message.channel.send(`Usage: ${this.usage}`);
             return;
         }
         // Check whether or not the first argument is a number. If so, remove it from the array and set it to 'duration'
-        let duration = isNaN(Number(args[0])) ? 86400 : args.shift();
+        let duration = isNaN(Number(args[0])) ? 43200 : args.shift();
         // Turn [word, word, word, ... word] (array of words) into [arg1, arg2, ... argn] (array of arguments)
         const pollargs = parser.parseStrings(args);
 
@@ -34,8 +36,8 @@ module.exports = {
             message.channel.send(`Usage: ${this.usage}`);
             return;
         }
-        if(pollargs.data.length > 7) {
-            message.channel.send('Please provide 6 or fewer voting options.');
+        if(pollargs.data.length > 11) {
+            message.channel.send('Please provide 10 or fewer voting options.');
             return;
         }
         

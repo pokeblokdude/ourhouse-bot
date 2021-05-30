@@ -32,7 +32,7 @@ module.exports = {
             .setTitle(`${obj.title}` + (maxPeople ? ` (${obj.recruitees.length}/${maxPeople})` : ''))
             .setDescription('No one has signed up yet!')
             .setTimestamp();
-        
+
         message.channel.send(embed).then(msg => {
             console.log(`Created recruitment: ${obj.title}`);
             msg.react('✋');

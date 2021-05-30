@@ -1,10 +1,14 @@
+const fs = require('fs');
+
 const Discord = require('discord.js');
 const client = new Discord.Client();
+
+const mongoose = require('mongoose');
+const mongoURL = 'mongodb://localhost:27017/ourhousebot';
 
 let config = require('./data/config.json');
 const token = config.token;
 
-const fs = require('fs');
 const pollHandler = require('./modules/poll-handler.js');
 const statTracker = require('./modules/stat-tracker.js');
 
@@ -25,7 +29,14 @@ client.once('ready', () => {
         }
     });
     //pollHandler.updatePolls(client);
-    //setInterval(pollHandler.updatePolls, 2500, client);
+    setInterval(pollHandler.updatePolls, 2500, client);
+    mongoose.connect(mongoURL, { useNewUrlParser: true, useUnifiedTopology: true });
+    const db = mongoose.connection;
+    db.on('error', console.error.bind(console, 'connection error'));
+    db.once('open', () => {
+        console.log('database connection open');
+    });
+
 });
 
 client.on('message', message => {

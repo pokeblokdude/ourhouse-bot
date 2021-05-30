@@ -1,5 +1,7 @@
-const { MessageEmbed, BaseGuildEmoji } = require('discord.js');
-const fs = require('fs');
+const mongoose = require('mongoose');
+const PcSpecs = require('../data/model/pc-specs');
+
+const { MessageEmbed } = require('discord.js');
 
 module.exports = {
     name: 'Specs',
@@ -7,18 +9,17 @@ module.exports = {
     description: "Sends a list of your PC specs, or the specs of another user.",
     category: "general",
     usage: '`specs {user}`',
-    execute(message, args) {
+    async execute(message, args) {
         if(args.length > 1) {
             message.channel.send(`Usage: ${this.usage}`);
             return;
         }
 
-        const specData = JSON.parse(fs.readFileSync('./data/specs.json'));
         const userId = args.length ? args[0].substring(3, args[0].length-1) : message.author.id;
         const member = message.channel.members.get(userId);
         const avatarURL = member.user.displayAvatarURL();
 
-        let obj = specData[userId];
+        let obj = await PcSpecs.findOne({ userID: userId }).then(console.log('Read from database'));
         if(!obj) {
             message.channel.send('User has not set their specs. Use !setspecs to link a PCPartpicker list.');
             return;

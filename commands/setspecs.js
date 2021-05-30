@@ -1,5 +1,6 @@
-const { memory } = require('console');
-const fs = require('fs');
+const mongoose = require('mongoose');
+const PcSpecs = require('../data/model/pc-specs');
+
 const pcp = require('pcpartpickerparser');
 
 module.exports = {
@@ -13,8 +14,9 @@ module.exports = {
             message.channel.send(`Usage: ${this.usage}`);
             return;
         }
-        const json = JSON.parse(fs.readFileSync('./data/specs.json'));
+
         const obj = {
+            userID: message.author.id,
             listID: args[0],
             memory: [],
             storage: [],
@@ -42,7 +44,6 @@ module.exports = {
                     });
                 }
             }
-            if(!obj.monitor.length) delete obj.monitor;
             
         }
         catch (err) {
@@ -50,13 +51,20 @@ module.exports = {
             return;
         }
 
-        Object.defineProperty(json, message.author.id, {
-            value: obj,
-            writable: true,
-            configurable: true,
-            enumerable: true
-        });
-
-        fs.writeFile('./data/specs.json', JSON.stringify(json, null, 4), (err) => { if(err) { throw err; } else { message.channel.send(`Saved specs for <@!${message.author.id}>`); message.delete(); }});
+        const record = await PcSpecs.findOne({ userID: message.author.id });
+        console.log(record);
+        const specs = new PcSpecs(obj);
+        
+        if(record != null) {
+            const r = await PcSpecs.replaceOne({ userID: message.author.id }, obj).then(console.log('Wrote to database'));
+            console.log(r.n);
+        }
+        else {
+            await specs.save().then(console.log('Wrote to database'));;
+        }
+        
+        message.channel.send(`Saved specs for <@!${message.author.id}>`); 
+        message.delete();
+        
     }
 }

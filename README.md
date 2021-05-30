@@ -1,6 +1,6 @@
 # Our House Server Bot
 
-This is an ongoing project. Mostly adding features as the need arises, but it's also good practice for stuff like working with files, etc.
+This is an ongoing project. Mostly adding features as the need arises, but it's also good practice for stuff like working with a database, files, etc. OurHouseBot uses MongoDB and Mongoose for data storage.
 
 It started out as a way to learn Discord.js and just to become comfortable with JS in general, applying stuff I learned in my "Programming Methodology" course.
 

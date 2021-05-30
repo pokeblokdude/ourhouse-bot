@@ -1,4 +1,6 @@
-const fs = require('fs');
+const mongoose = require('mongoose');
+const FeatureRequest = require('../data/model/feature-request');
+
 const { MessageEmbed } = require('discord.js');
 
 module.exports = {
@@ -7,17 +9,17 @@ module.exports = {
     description: "Sends a list of current feature requests.",
     category: "general",
     usage: '`requests`',
-    execute(message, args) {
-        const json = JSON.parse(fs.readFileSync('./data/feature-requests.json'));
+    async execute(message, args) {
+        const featureRequests = await FeatureRequest.find({});
 
-        if(Object.keys(json).length === 0) {
+        if(!featureRequests) {
             message.channel.send('There are currently no requests.');
             return;
         }
 
         let requests = [];
-        for(const r in json) {
-            requests.push(json[r]);
+        for(const r in featureRequests) {
+            requests.push(featureRequests[r]);
         }
 
         let embed = new MessageEmbed().setTitle('Feature Requests for Our House Bot').setColor('#59A833');
