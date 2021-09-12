@@ -1,20 +1,23 @@
 const fs = require('fs');
 const pollHandler = require('./../modules/poll-handler.js');
 
+const Poll = require('../model/poll.js');
+
 module.exports = {
     name: 'End Poll*',
     command: 'endpoll',
     description: "Ends the active poll in the current channel, if there is one.",
     category: "admin",
     usage: '`endpoll`',
-    execute(message, args) {
+    async execute(message, args) {
         //               Engineer' (Our House) = 784934880433143809, "Admin" (Bot Testing) = 735229898871799971
         if(message.member.roles.cache.get('784934880433143809') || message.member.roles.cache.get('735229898871799971')) {
-            let polls = JSON.parse(fs.readFileSync('./data/polls.json'));
-            if(polls.hasOwnProperty(message.channel.id)) {
-                let pollname = polls[message.channel.id].title;
+            let poll = await Poll.findOne({ channelID: message.channel.id }).exec();
+            console.log(poll);
+            if(poll !== null) {
+                let pollname = poll.title;
                 pollHandler.endPoll(message.channel.id);
-                message.channel.send(`Ended poll "${pollname}"\n${polls[message.channel.id].url}`);
+                message.channel.send(`Ended poll "${pollname}"\n${poll.messageURL}`);
                 message.delete();
             }
             else {

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const FeatureRequest = require('../data/model/feature-request');
+const FeatureRequest = require('../model/feature-request');
 
 const { MessageEmbed } = require('discord.js');
 

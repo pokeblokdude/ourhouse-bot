@@ -28,8 +28,8 @@ client.once('ready', () => {
             type: 'PLAYING'
         }
     });
-    //pollHandler.updatePolls(client);
-    //setInterval(pollHandler.updatePolls, 2500, client);
+    pollHandler.updatePolls(client);
+    setInterval(pollHandler.updatePolls, 2500, client);
     mongoose.connect(mongoURL, { useNewUrlParser: true, useUnifiedTopology: true });
     const db = mongoose.connection;
     db.on('error', console.error.bind(console, 'connection error'));

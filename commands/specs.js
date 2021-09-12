@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const PcSpecs = require('../data/model/pc-specs');
+const PcSpecs = require('../model/pc-specs');
 
 const { MessageEmbed } = require('discord.js');
 
