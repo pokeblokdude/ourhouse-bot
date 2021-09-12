@@ -1,4 +1,3 @@
-const mongoose = require('mongoose');
 const FeatureRequest = require('../model/feature-request');
 
 const parser = require('../modules/command-parser.js');
