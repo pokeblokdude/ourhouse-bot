@@ -1,46 +1,65 @@
-const fs = require('fs');
-const dayjs = require('dayjs');
-const toObject = require('dayjs/plugin/toObject');
-dayjs.extend(toObject);
-const indexer = require('../commands/stats/index');
+const User = require('./../model/user');
+const Message = require('./../model/message');
+const Channel = require('./../model/channel');
 
 // 136630089222848513 - my ID
 module.exports = {
-    update(message, client, isCommand) {
-        let indexes = JSON.parse(fs.readFileSync('./data/index.json'));
-        console.log(indexes);
-        let userId = message.author.id;
-        if(userId === client.user.id) {
-            return;
-        }
-        // ID: { name: string, textChannels: Obj[] }
-        let guildObj = indexes[message.guild.id];
+    async update(message, isCommand) {
+        const messageObj = {
+            messageID: message.id,
+            channelID: message.channelId,
+            authorID: message.author.id,
+            content: message.content,
+            isCommand: isCommand,
+            timestamp: message.createdTimestamp
+        };
 
-        let channelObj = guildObj.textChannels[message.channel.id];
+        const messageQ = new Message(messageObj);
+        await messageQ.save();
 
-        // If the user is already in the file
-        if(channelObj.activeUsers.hasOwnProperty(userId)) {
-            isCommand ? channelObj.activeUsers[userId].commandCount++ : channelObj.activeUsers[userId].messageCount++;
+
+        let channelObj = await Channel.findOne({ channelID: message.channel.id }).exec();
+        let channelQ = null;
+        if(channelObj === null) {
+            channelObj = {
+                channelID: message.channel.id,
+                messages: [ message.id ]
+            };
+            channelQ = new Channel(channelObj);
         }
         else {
-            let userObj = {
-                name: message.author.username,
-                firstMessageDate: dayjs().toObject(),
-                messageCount: isCommand ? 0 : 1,
-                commandCount: isCommand ? 1 : 0
-            };
-            Object.defineProperty(channelObj.activeUsers, message.author.id, {
-                value: userObj,
-                configurable: true,
-                writable: true,
-                enumerable: true
-            });
+            channelObj.messages.push(message.id);
         }
 
-        Object.defineProperty(guildObj.textChannels, message.channel.id, channelObj);
-        Object.defineProperty(indexes, message.guild.id, guildObj);
+        if(channelQ !== null) {
+            await channelQ.save()
+        }
+        else {
+            await channelObj.save();
+        }
+        
 
+        let userObj = await User.findOne({ userID: message.author.id }).exec();
+        let userQ = null;
+        if(userObj === null) {
+            userObj = {
+                userID: message.author.id,
+                username: message.author.username + "#" + message.author.discriminator,
+                totalMessages: 1,
+                messages: [ message.id ]
+            };
+            userQ = new User(userObj);
+        }
+        else {
+            userObj.totalMessages = userObj.totalMessages + 1;
+            userObj.messages.push(message.id);
+        }
 
-        fs.writeFile('./data/index.json', JSON.stringify(indexes, null, 4), (err) => { if(err) { throw err; }});
+        if(userQ !== null) {
+            await userQ.save();
+        }
+        else {
+            await userObj.save();
+        }
     }
 }

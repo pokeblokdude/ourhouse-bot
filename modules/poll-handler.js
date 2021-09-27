@@ -41,7 +41,7 @@ const addReactions = (message, reactions) => {
 
 module.exports = {
     async endPoll(channelID) {
-        await Poll.deleteOne({ channelID: channelID});
+        await Poll.deleteOne({ channelID: channelID });
     },
     async updatePolls(client) {
         const polls = await Poll.find({});

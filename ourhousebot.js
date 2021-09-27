@@ -6,7 +6,7 @@ const client = new Discord.Client();
 const mongoose = require('mongoose');
 const mongoURL = 'mongodb://localhost:27017/ourhousebot';
 
-let config = require('./data/config.json');
+let config = require('./config.json');
 const token = config.token;
 
 const pollHandler = require('./modules/poll-handler.js');
@@ -29,8 +29,13 @@ client.once('ready', () => {
             type: 'PLAYING'
         }
     });
+
+    // poll update interval = = = = = 
     pollHandler.updatePolls(client);
     setInterval(pollTimerMiddleman.exec, 2500, client);
+    // = = = = = = = = = = = = = = = =
+
+    // establish database connection
     mongoose.connect(mongoURL, { useNewUrlParser: true, useUnifiedTopology: true });
     const db = mongoose.connection;
     db.on('error', console.error.bind(console, 'connection error'));
@@ -58,7 +63,7 @@ client.on('message', message => {
             }
         }
     }
-    //statTracker.update(message, client, isCommand);
+    statTracker.update(message, isCommand);
 });
 
 // ^^^ PUT CODE ABOVE ^^^ //

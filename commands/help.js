@@ -1,8 +1,7 @@
-const fs = require('fs');
 const { MessageEmbed } = require("discord.js");
 const { getFilesRecursive } = require('./../modules/file-stuff.js');
 
-const config = require('./../data/config.json');
+const config = require('./../config.json');
 const prefix = config.prefix;
 const categories = config.commandCategories;
 

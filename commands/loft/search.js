@@ -1,6 +1,6 @@
 const parser = require('./../../modules/command-parser.js');
 
-const config = require('./../../data/config.json');
+const config = require('./../../config.json');
 const token = config['lastfm-token'];
 
 const LastFM = require('last-fm');
