@@ -10,6 +10,7 @@ let config = require('./data/config.json');
 const token = config.token;
 
 const pollHandler = require('./modules/poll-handler.js');
+const pollTimerMiddleman = require('./modules/poll-timer-middleman');
 const statTracker = require('./modules/stat-tracker.js');
 
 client.commands = new Discord.Collection();
@@ -29,7 +30,7 @@ client.once('ready', () => {
         }
     });
     pollHandler.updatePolls(client);
-    setInterval(pollHandler.updatePolls, 2500, client);
+    setInterval(pollTimerMiddleman.exec, 2500, client);
     mongoose.connect(mongoURL, { useNewUrlParser: true, useUnifiedTopology: true });
     const db = mongoose.connection;
     db.on('error', console.error.bind(console, 'connection error'));

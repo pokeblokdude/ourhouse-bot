@@ -1,4 +1,3 @@
-const fs = require('fs');
 const { MessageEmbed } = require("discord.js");
 const parser = require('./../modules/command-parser.js')
 
@@ -42,7 +41,8 @@ module.exports = {
             message.channel.send('Please provide 10 or fewer voting options.');
             return;
         }
-        // Actual data from the database
+        
+        // Check whether the database even contains any polls
         if(await Poll.findOne({ channelID: message.channel.id }).exec() !== null) {
             message.channel.send('This channel already has an active poll!');
             return;
