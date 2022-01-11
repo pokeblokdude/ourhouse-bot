@@ -7,12 +7,14 @@ module.exports = {
     async update(message, isCommand) {
         const messageObj = {
             messageID: message.id,
-            channelID: message.channelId,
+            channelID: message.channel.id,
             authorID: message.author.id,
             content: message.content,
             isCommand: isCommand,
             timestamp: message.createdTimestamp
         };
+
+        console.log(messageObj.channelID);
 
         const messageQ = new Message(messageObj);
         await messageQ.save();

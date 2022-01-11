@@ -110,7 +110,7 @@ module.exports = {
                 messageObj.edit(newEmbed);
                 if(shouldEndPoll) {
                     this.endPoll(pollObj.channelID);
-                    messageObj.channel.send(`Ended poll: "${pollObj.title} (Time elapsed)"\n${messageObj.url}`);
+                    messageObj.channel.send(`Ended poll: "${pollObj.title}" (Time elapsed)\n${messageObj.url}`);
                 }
                 else {
                     await pollObj.save();
