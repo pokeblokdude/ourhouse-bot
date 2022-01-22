@@ -1,5 +1,3 @@
-const fs = require('fs');
-const { MessageEmbed } = require("discord.js");
 const helper = require('./help.js');
 
 module.exports = {
