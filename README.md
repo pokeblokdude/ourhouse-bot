@@ -8,6 +8,7 @@ It started out as a way to learn Discord.js and just to become comfortable with 
     Polls with live updates
     Recruiting with live updates
     Display PC specs from linked PCPartpicker lists
+    Get profile picture for a given user
     Bulk message deletion
     Random number generator
     Feature requests
