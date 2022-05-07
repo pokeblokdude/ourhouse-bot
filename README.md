@@ -4,7 +4,7 @@ This is an ongoing project. Mostly adding features as the need arises, but it's 
 
 It started out as a way to learn Discord.js and just to become comfortable with JS in general, applying stuff I learned in my "Programming Methodology" course.
 
-## Current features
+## Current features (very random)
     Polls with live updates
     Recruiting with live updates
     Display PC specs from linked PCPartpicker lists
@@ -12,6 +12,7 @@ It started out as a way to learn Discord.js and just to become comfortable with 
     Bulk message deletion
     Random number generator
     Feature requests
+    HLTV World Ranking
 
 ## Work-in-progress Features
     Server Stats
