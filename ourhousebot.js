@@ -63,7 +63,7 @@ client.on('message', message => {
             }
         }
     }
-    statTracker.update(message, isCommand);
+    //statTracker.update(message, isCommand);
 });
 
 // ^^^ PUT CODE ABOVE ^^^ //
